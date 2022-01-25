@@ -67,7 +67,7 @@ class Calculator {
   }
 
   squareOperation(num) {
-    return num * 2;
+    return Math.pow(num, 2);
   }
 
   squareRootOperation(num) {
