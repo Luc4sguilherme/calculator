@@ -30,8 +30,6 @@ const unaryOperator = ["%", "1/x", "**", "√", "+/-"];
 class Calculator {
   constructor() {
     this.MAX_VISOR_CHAR = 10;
-    this.total = document.getElementById("total");
-    this.accumulator = document.getElementById("accumulator");
     this.operator = null;
     this.currentNumber = null;
 
