@@ -21,7 +21,7 @@ const buttons = [
   "sum",
   "negate",
   "zero",
-  "comma",
+  "dot",
   "equal",
 ];
 
@@ -118,7 +118,7 @@ class Calculator {
     this.currentNumber += `${num}`;
   }
 
-  addComma() {
+  addDot() {
     const currentEntry = this.getTotal();
 
     if (currentEntry.innerText.length < this.MAX_VISOR_CHAR) {
@@ -286,7 +286,7 @@ class Calculator {
       this.getResult();
     });
     this.createButtonClickEvent("zero", () => this.addNumber(0));
-    this.createButtonClickEvent("comma", () => this.addComma(","));
+    this.createButtonClickEvent("dot", () => this.addDot(","));
     this.createButtonClickEvent("equal", () => this.getResult());
   }
 }
