@@ -106,6 +106,11 @@ class Calculator {
 
   addNumber(num) {
     const currentEntry = this.getTotal();
+    const accumulator = this.getAccumulator();
+
+    if (accumulator.innerText.includes("=") && currentEntry.innerText.length > 0) {
+      this.cleanAll();
+    }
 
     if (currentEntry.innerText === "0" || (this.operator && !this.currentNumber)) {
       currentEntry.innerText = num;
