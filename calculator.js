@@ -66,7 +66,7 @@ class Calculator {
     return 1 / num;
   }
 
-  rootOperation(num) {
+  squareOperation(num) {
     return num * 2;
   }
 
@@ -186,7 +186,7 @@ class Calculator {
       }
 
       case "**": {
-        return this.rootOperation(...numbers);
+        return this.squareOperation(...numbers);
       }
 
       case "√": {
