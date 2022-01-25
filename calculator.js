@@ -259,46 +259,139 @@ class Calculator {
     this[button].addEventListener("click", fn);
   }
 
+  buttonHandlerMap(button) {
+    switch (button) {
+      case "percentage": {
+        this.setOperator("%");
+        this.getResult();
+        break;
+      }
+
+      case "cancel-entry": {
+        this.cleanCurrentEntry();
+        break;
+      }
+
+      case "clear": {
+        this.cleanAll();
+        break;
+      }
+
+      case "delete": {
+        this.deleteOperation();
+        break;
+      }
+
+      case "inverse": {
+        this.setOperator("1/x");
+        this.getResult();
+        break;
+      }
+
+      case "root": {
+        this.setOperator("**");
+        this.getResult();
+        break;
+      }
+
+      case "square-root": {
+        this.setOperator("√");
+        this.getResult();
+        break;
+      }
+
+      case "division": {
+        this.setOperator("/");
+        break;
+      }
+
+      case "seven": {
+        this.addNumber(7);
+        break;
+      }
+
+      case "eight": {
+        this.addNumber(8);
+        break;
+      }
+
+      case "nine": {
+        this.addNumber(9);
+        break;
+      }
+
+      case "multiplication": {
+        this.setOperator("*");
+        break;
+      }
+
+      case "four": {
+        this.addNumber(4);
+        break;
+      }
+
+      case "five": {
+        this.addNumber(5);
+        break;
+      }
+
+      case "six": {
+        this.addNumber(6);
+        break;
+      }
+
+      case "subtration": {
+        this.setOperator("-");
+        break;
+      }
+
+      case "one": {
+        this.addNumber(1);
+        break;
+      }
+
+      case "two": {
+        this.addNumber(2);
+        break;
+      }
+
+      case "three": {
+        this.addNumber(3);
+        break;
+      }
+
+      case "sum": {
+        this.setOperator("+");
+        break;
+      }
+
+      case "negate": {
+        this.setOperator("+/-");
+        this.getResult();
+        break;
+      }
+
+      case "zero": {
+        this.addNumber(0);
+        break;
+      }
+
+      case "dot": {
+        this.addDot();
+        break;
+      }
+
+      case "equal": {
+        this.getResult();
+        break;
+      }
+    }
+  }
+
   configureButtonsEvent() {
-    this.createButtonClickEvent("percentage", () => {
-      this.setOperator("%");
-      this.getResult();
-    });
-    this.createButtonClickEvent("cancel-entry", () => this.cleanCurrentEntry());
-    this.createButtonClickEvent("clear", () => this.cleanAll());
-    this.createButtonClickEvent("delete", () => this.deleteOperation());
-    this.createButtonClickEvent("inverse", () => {
-      this.setOperator("1/x");
-      this.getResult();
-    });
-    this.createButtonClickEvent("root", () => {
-      this.setOperator("**");
-      this.getResult();
-    });
-    this.createButtonClickEvent("square-root", () => {
-      this.setOperator("√");
-      this.getResult();
-    });
-    this.createButtonClickEvent("division", () => this.setOperator("/"));
-    this.createButtonClickEvent("seven", () => this.addNumber(7));
-    this.createButtonClickEvent("eight", () => this.addNumber(8));
-    this.createButtonClickEvent("nine", () => this.addNumber(9));
-    this.createButtonClickEvent("multiplication", () => this.setOperator("*"));
-    this.createButtonClickEvent("four", () => this.addNumber(4));
-    this.createButtonClickEvent("five", () => this.addNumber(5));
-    this.createButtonClickEvent("six", () => this.addNumber(6));
-    this.createButtonClickEvent("subtration", () => this.setOperator("-"));
-    this.createButtonClickEvent("one", () => this.addNumber(1));
-    this.createButtonClickEvent("two", () => this.addNumber(2));
-    this.createButtonClickEvent("three", () => this.addNumber(3));
-    this.createButtonClickEvent("sum", () => this.setOperator("+"));
-    this.createButtonClickEvent("negate", () => {
-      this.setOperator("+/-");
-      this.getResult();
-    });
-    this.createButtonClickEvent("zero", () => this.addNumber(0));
-    this.createButtonClickEvent("dot", () => this.addDot(","));
-    this.createButtonClickEvent("equal", () => this.getResult());
+    for (let i = 0; i < buttons.length; i++) {
+      this.createButtonClickEvent(buttons[i], () => this.buttonHandlerMap(buttons[i]));
+    }
   }
 }
 
