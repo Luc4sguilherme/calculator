@@ -224,6 +224,14 @@ class Calculator {
     }
   }
 
+  formatNumber(number, precision) {
+    if (number.length > this.MAX_VISOR_CHAR) {
+      return Number(number).toExponential(precision);
+    } else {
+      return number;
+    }
+  }
+
   getResult() {
     const currentEntry = this.getTotal();
     const accumulator = this.getAccumulator();
@@ -235,13 +243,13 @@ class Calculator {
     const num1 = Number(currentEntry.innerText ?? 0);
     const num2 = Number(accumulator.innerText.substring(0, accumulator.innerText.length - 2) ?? 0);
 
-    const result = String(this.exececuteOperations([num1, num2], this.operator)).substring(0, 8);
+    const result = String(this.exececuteOperations([num1, num2], this.operator));
 
     if (accumulator.innerText.length && !unaryOperator.includes(this.operator)) {
       accumulator.innerText = `${num2} ${this.operator} ${num1} = `;
     }
 
-    currentEntry.innerText = result;
+    currentEntry.innerText = this.formatNumber(result, 3);
   }
 
   createButtonClickEvent(button, fn) {
