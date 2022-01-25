@@ -38,6 +38,7 @@ class Calculator {
     }
 
     this.configureButtonsEvent();
+    this.configureKeyboardEvent();
   }
 
   sumOperation(a, b) {
@@ -392,6 +393,61 @@ class Calculator {
     for (let i = 0; i < buttons.length; i++) {
       this.createButtonClickEvent(buttons[i], () => this.buttonHandlerMap(buttons[i]));
     }
+  }
+
+  createKeyboardEvent(fn) {
+    document.addEventListener("keydown", fn);
+  }
+
+  keyboardMap(key) {
+    switch (key) {
+      case "%":
+        return "percentage";
+      case "Backspace":
+        return "clear";
+      case "Delete":
+        return "delete";
+      case "²":
+        return "square-root";
+      case "/":
+        return "division";
+      case "7":
+        return "seven";
+      case "8":
+        return "eight";
+      case "9":
+        return "nine";
+      case "*":
+        return "multiplication";
+      case "4":
+        return "four";
+      case "5":
+        return "five";
+      case "6":
+        return "six";
+      case "-":
+        return "subtration";
+      case "1":
+        return "one";
+      case "2":
+        return "two";
+      case "3":
+        return "three";
+      case "+":
+        return "sum";
+      case "0":
+        return "zero";
+      case ".":
+      case ",":
+        return "dot";
+      case "=":
+      case "Enter":
+        return "equal";
+    }
+  }
+
+  configureKeyboardEvent() {
+    this.createKeyboardEvent((event) => this.buttonHandlerMap(this.keyboardMap(event.key)));
   }
 }
 
