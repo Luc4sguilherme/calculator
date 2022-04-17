@@ -74,7 +74,7 @@ class Calculator {
   }
 
   negateOperation(num) {
-    return ~num + 1;
+    return num * (-1);
   }
 
   getTotal() {
