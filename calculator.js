@@ -179,7 +179,7 @@ class Calculator {
     }
   }
 
-  exececuteOperations(numbers, action) {
+  executeOperations(numbers, action) {
     switch (action) {
       case "%": {
         return this.percentageOperation(...numbers);
@@ -247,7 +247,7 @@ class Calculator {
     const num1 = Number(currentEntry.innerText ?? 0);
     const num2 = Number(accumulator.innerText.substring(0, accumulator.innerText.length - 2) ?? 0);
 
-    const result = String(this.exececuteOperations([num1, num2], this.operator));
+    const result = String(this.executeOperations([num1, num2], this.operator));
 
     if (accumulator.innerText.length && !unaryOperator.includes(this.operator)) {
       accumulator.innerText = `${num2} ${this.operator} ${num1} = `;
